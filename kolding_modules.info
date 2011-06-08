@@ -1,0 +1,8 @@
+core = "6.x"
+dependencies[] = "features"
+dependencies[] = "imagefield"
+description = "Collection of feature overrides for kolding project"
+features[content][] = "article-field_top_image"
+features[content][] = "page-field_top_image"
+name = "kolding_modules"
+package = "Features"
