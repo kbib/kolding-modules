@@ -1,3 +1,64 @@
 <?php
 
+
+function kolding_modules_ctools_plugin_api() {
+  list($module, $api) = func_get_args();
+  if ($module == "page_manager" && $api == "pages_default") {
+    return array("version" => 1);
+  }
+  elseif ($module == "strongarm" && $api == "strongarm") {
+    return array("version" => 1);
+  }
+}
+
+
+
 // Drupal needs this blank file.
+
+
+function kolding_modules_form_ting_search_form_alter(&$form,&$form_state){
+  //dsm($form);
+  
+  $form['keys']['#weight'] = 1;
+  $form['example_text']['#weight'] = 4;
+  
+  $form['submit']['#weight'] = 3;
+  $form['type'] = array(
+    '#weight' => 2,
+    '#type' => 'select',
+    '#options' => array(
+      '' => t('Vælg materiale'),
+			'bog' => t('Bøger'),
+			'cd' => t('Musik'),
+			'fulltext' => t('Full text'),
+    ),
+    '#attributes' => array('class' => 'select-type-field'),
+  );  
+}
+
+function kolding_modules_menu_alter(&$items) {
+ 
+  $items['ting/search']['page callback'] = 'kolding_modules_ting_search_pages_redirect';
+   
+  return $items;
+}
+  
+/**
+ * Search result page.
+ */
+function kolding_modules_ting_search_pages_redirect() {
+
+  if (isset($_POST['keys'])) {
+    if($_POST['type']){
+      $extend = 'facets=facet.type:'.$_POST['type'].';';
+    }
+    return drupal_goto('ting/search/' . $_POST['keys'],'',$extend);
+  }
+
+  $keys = search_get_keys();
+  if (strlen($keys) > 0) {
+    // Redirect to the new Panels based search.
+    return drupal_goto('ting/search/' . $keys, NULL, NULL, 301);
+  }
+  return drupal_not_found();
+}

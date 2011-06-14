@@ -11,16 +11,17 @@ function kolding_modules_content_default_fields() {
     'field_name' => 'field_top_image',
     'type_name' => 'article',
     'display_settings' => array(
+      'weight' => '31',
+      'parent' => '',
       'label' => array(
         'format' => 'above',
-        'exclude' => 0,
       ),
       'teaser' => array(
         'format' => 'image_plain',
         'exclude' => 0,
       ),
       'full' => array(
-        'format' => 'image_plain',
+        'format' => 'hidden',
         'exclude' => 0,
       ),
       '4' => array(
