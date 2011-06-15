@@ -62,3 +62,4 @@ function kolding_modules_ting_search_pages_redirect() {
   }
   return drupal_not_found();
 }
+include_once('kolding_modules.features.inc');
