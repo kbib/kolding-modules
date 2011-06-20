@@ -1,3 +1,19 @@
 <?php
 
+function wiki_front_page_menu() {
+  $items = array();
+  
+  $items['wiki/create-wiki-page'] = array(
+    'title' => 'Create new wiki page',
+    'page callback' => 'drupal_goto',
+    'page arguments' => array('node/add/wiki-page'),
+    'access callback' => 'user_access',
+    'access arguments' => array('access content'),
+    'type' => MENU_LOCAL_TASK,
+    'weight' => -10, //We need to be before the view tab
+  );
+  
+  return $items;
+}
+
 include_once('wiki_frontpage.features.inc');
