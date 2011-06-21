@@ -13,7 +13,18 @@ function wiki_frontpage_default_page_manager_pages() {
   $page->admin_description = '';
   $page->path = 'wiki';
   $page->access = array();
-  $page->menu = array();
+  $page->menu = array(
+    'type' => 'tab',
+    'title' => 'View',
+    'name' => 'navigation',
+    'weight' => '0',
+    'parent' => array(
+      'type' => 'none',
+      'title' => '',
+      'name' => 'navigation',
+      'weight' => '0',
+    ),
+  );
   $page->arguments = array();
   $page->conf = array();
   $page->default_handlers = array();
@@ -31,7 +42,28 @@ function wiki_frontpage_default_page_manager_pages() {
     'pipeline' => 'standard',
     'css_id' => '',
     'css' => '',
-    'contexts' => array(),
+    'contexts' => array(
+      0 => array(
+        'name' => 'node',
+        'id' => 1,
+        'identifier' => 'Gallery node',
+        'keyword' => 'gallery_node',
+        'context_settings' => array(
+          'node' => '',
+          'nid' => '244',
+        ),
+      ),
+      1 => array(
+        'name' => 'node',
+        'id' => 2,
+        'identifier' => 'Ting reference node',
+        'keyword' => 'ting_reference_node',
+        'context_settings' => array(
+          'node' => 'Cui Bene Oppeto [nid: 244]',
+          'nid' => '244',
+        ),
+      ),
+    ),
     'relationships' => array(),
   );
   $display = new panels_display;
@@ -56,6 +88,78 @@ function wiki_frontpage_default_page_manager_pages() {
   $display->panels = array();
     $pane = new stdClass;
     $pane->pid = 'new-1';
+    $pane->panel = 'anbefalinger';
+    $pane->type = 'content_field';
+    $pane->subtype = 'field_ting_refs';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'label' => 'normal',
+      'formatter' => 'mixed',
+      'context' => 'context_node_2',
+      'override_title' => 1,
+      'override_title_text' => 'Recommendations from %ting_reference_node:title',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+      'style' => 'ding_box',
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $display->content['new-1'] = $pane;
+    $display->panels['anbefalinger'][0] = 'new-1';
+    $pane = new stdClass;
+    $pane->pid = 'new-2';
+    $pane->panel = 'center';
+    $pane->type = 'content_field';
+    $pane->subtype = 'field_wiki_images';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'label' => 'normal',
+      'formatter' => 'ding_wiki_thumbnail_description',
+      'context' => 'context_node_1',
+      'override_title' => 1,
+      'override_title_text' => '%gallery_node:title - gallery',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $display->content['new-2'] = $pane;
+    $display->panels['center'][0] = 'new-2';
+    $pane = new stdClass;
+    $pane->pid = 'new-3';
+    $pane->panel = 'emneord';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'wiki_tags-panel_pane_1';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_title' => 1,
+      'override_title_text' => 'Top wiki tags',
+      'items_per_page' => '20',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+      'style' => 'ding_box',
+    );
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'ding-wiki-terms-pane',
+    );
+    $pane->extras = array();
+    $pane->position = 0;
+    $display->content['new-3'] = $pane;
+    $display->panels['emneord'][0] = 'new-3';
+    $pane = new stdClass;
+    $pane->pid = 'new-4';
     $pane->panel = 'kampagne';
     $pane->type = 'relevant';
     $pane->subtype = 'relevant';
@@ -79,10 +183,10 @@ function wiki_frontpage_default_page_manager_pages() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
-    $display->content['new-1'] = $pane;
-    $display->panels['kampagne'][0] = 'new-1';
+    $display->content['new-4'] = $pane;
+    $display->panels['kampagne'][0] = 'new-4';
     $pane = new stdClass;
-    $pane->pid = 'new-2';
+    $pane->pid = 'new-5';
     $pane->panel = 'kampagne_';
     $pane->type = 'relevant';
     $pane->subtype = 'relevant';
@@ -106,10 +210,10 @@ function wiki_frontpage_default_page_manager_pages() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
-    $display->content['new-2'] = $pane;
-    $display->panels['kampagne_'][0] = 'new-2';
+    $display->content['new-5'] = $pane;
+    $display->panels['kampagne_'][0] = 'new-5';
     $pane = new stdClass;
-    $pane->pid = 'new-3';
+    $pane->pid = 'new-6';
     $pane->panel = 'right';
     $pane->type = 'relevant';
     $pane->subtype = 'relevant';
@@ -133,8 +237,8 @@ function wiki_frontpage_default_page_manager_pages() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
-    $display->content['new-3'] = $pane;
-    $display->panels['right'][0] = 'new-3';
+    $display->content['new-6'] = $pane;
+    $display->panels['right'][0] = 'new-6';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
