@@ -1,6 +1,6 @@
 <?php
 
-function wiki_front_page_menu() {
+function wiki_frontpage_menu() {
   $items = array();
   
   $items['wiki/create-wiki-page'] = array(
@@ -12,8 +12,20 @@ function wiki_front_page_menu() {
     'type' => MENU_LOCAL_TASK,
     'weight' => -10, //We need to be before the view tab
   );
+  $items['wiki/frontpage'] = array(
+    'title' => 'View',
+    'page callback' => 'drupal_goto',
+    'page arguments' => array('wiki'),
+    'access callback' => 'wiki_frontpage_no_panels',
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 0, //We need to be before the view tab
+  );
   
   return $items;
+}
+
+function wiki_frontpage_no_panels() {
+  return !user_access('use page manager');
 }
 
 include_once('wiki_frontpage.features.inc');

@@ -14,13 +14,13 @@ function wiki_frontpage_default_page_manager_pages() {
   $page->path = 'wiki';
   $page->access = array();
   $page->menu = array(
-    'type' => 'tab',
+    'type' => 'none',
     'title' => 'View',
     'name' => 'navigation',
     'weight' => '0',
     'parent' => array(
-      'type' => 'none',
-      'title' => '',
+      'type' => 'tab',
+      'title' => 'View parent',
       'name' => 'navigation',
       'weight' => '0',
     ),
@@ -85,7 +85,7 @@ function wiki_frontpage_default_page_manager_pages() {
     ),
   );
   $display->cache = array();
-  $display->title = '';
+  $display->title = 'Wiki';
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass;
@@ -241,6 +241,28 @@ function wiki_frontpage_default_page_manager_pages() {
     $pane->position = 0;
     $display->content['new-6'] = $pane;
     $display->panels['right'][0] = 'new-6';
+    $pane = new stdClass;
+    $pane->pid = 'new-7';
+    $pane->panel = 'tabs';
+    $pane->type = 'page_tabs';
+    $pane->subtype = 'page_tabs';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'type' => 'primary',
+      'id' => 'tabs',
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $display->content['new-7'] = $pane;
+    $display->panels['tabs'][0] = 'new-7';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
