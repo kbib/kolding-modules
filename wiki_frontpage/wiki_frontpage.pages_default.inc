@@ -216,6 +216,28 @@ function wiki_frontpage_default_page_manager_pages() {
     $display->panels['kampagne_'][0] = 'new-5';
     $pane = new stdClass;
     $pane->pid = 'new-6';
+    $pane = new stdClass;
+    $pane->pid = 'new-7';
+    $pane->panel = 'middle_left';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'wiki_list-panel_pane_3';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_title' => 1,
+      'override_title_text' => 'Recent wiki pages',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $display->content['new-7'] = $pane;
+    $display->panels['middle_left'][0] = 'new-7';
+    $pane = new stdClass;
+    $pane->pid = 'new-8';
     $pane->panel = 'right';
     $pane->type = 'relevant';
     $pane->subtype = 'relevant';
