@@ -121,7 +121,7 @@ function wiki_frontpage_default_page_manager_pages() {
     $pane->access = array();
     $pane->configuration = array(
       'label' => 'normal',
-      'formatter' => 'ding_wiki_thumbnail_description',
+      'formatter' => 'thumbnail_description',
       'context' => 'context_node_1',
       'override_title' => 1,
       'override_title_text' => '%gallery_node:title - gallery',
@@ -130,7 +130,10 @@ function wiki_frontpage_default_page_manager_pages() {
     $pane->style = array(
       'settings' => NULL,
     );
-    $pane->css = array();
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'ding-wiki-carousel',
+    );
     $pane->extras = array();
     $pane->position = 0;
     $display->content['new-2'] = $pane;
@@ -216,6 +219,27 @@ function wiki_frontpage_default_page_manager_pages() {
     $display->panels['kampagne_'][0] = 'new-5';
     $pane = new stdClass;
     $pane->pid = 'new-6';
+    $pane->panel = 'menu';
+    $pane->type = 'custom';
+    $pane->subtype = 'custom';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'admin_title' => '',
+      'title' => 'Foo',
+      'body' => 'Foo',
+      'format' => '1',
+      'substitute' => 1,
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $display->content['new-6'] = $pane;
+    $display->panels['menu'][0] = 'new-6';
     $pane = new stdClass;
     $pane->pid = 'new-7';
     $pane->panel = 'middle_left';
@@ -261,10 +285,10 @@ function wiki_frontpage_default_page_manager_pages() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
-    $display->content['new-6'] = $pane;
-    $display->panels['right'][0] = 'new-6';
+    $display->content['new-8'] = $pane;
+    $display->panels['right'][0] = 'new-8';
     $pane = new stdClass;
-    $pane->pid = 'new-7';
+    $pane->pid = 'new-9';
     $pane->panel = 'tabs';
     $pane->type = 'page_tabs';
     $pane->subtype = 'page_tabs';
@@ -283,8 +307,8 @@ function wiki_frontpage_default_page_manager_pages() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
-    $display->content['new-7'] = $pane;
-    $display->panels['tabs'][0] = 'new-7';
+    $display->content['new-9'] = $pane;
+    $display->panels['tabs'][0] = 'new-9';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
