@@ -9,8 +9,8 @@ function kolding_modules_form_alter(&$form, &$form_state, $form_id){
     #var_dump($form);
     
     $form['name']['#prefix'] = '<p>log ind &gt;</p>';
-    $form['name']['#title'] = 'Pinkode';
-    //$form['pass']['#title'] = '';
+    $form['name']['#title'] = t('CPR Lånernr.');
+    $form['pass']['#title'] = t('Pinkode');
     $form['submit']['#type'] = 'image_button';
     $form['submit']['#src'] = drupal_get_path('theme','kolding').'/images/logindknap.png';
   }
@@ -22,6 +22,7 @@ function kolding_modules_form_ting_search_form_alter(&$form,&$form_state){
   
   $form['keys']['#weight'] = 1;
   $form['example_text']['#weight'] = 4;
+  $form['example_text']['#value'] = '<div class="example">'.t('eksempel menu').'</div>';
   
   $form['submit']['#weight'] = 3;
   $form['type'] = array(
