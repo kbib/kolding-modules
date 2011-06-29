@@ -29,9 +29,9 @@ function wiki_frontpage_default_panels_layout() {
         'region_class' => '',
         'no_scale' => FALSE,
         'fixed_width' => '',
-        'column_separation' => '10px',
-        'region_separation' => '10px',
-        'row_separation' => '0.5em',
+        'column_separation' => '',
+        'region_separation' => '',
+        'row_separation' => '',
       ),
       'main' => array(
         'type' => 'column',
