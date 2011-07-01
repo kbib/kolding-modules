@@ -94,4 +94,23 @@ function kolding_modules_ting_search_pages_redirect() {
   }
   return drupal_not_found();
 }
+
+/**
+ * Implementation of hook_init().
+ */
+function kolding_modules_init() {
+  // AddThis is integrated into the page template so addthis_add_default_js gets called too
+  // late in the process. We add it here instead.
+  addthis_add_default_js();
+}
+
+/**
+ * Implementation of hook_addthis_toolbox_services_alter().
+ */
+function kolding_modules_addthis_toolbox_services_alter(&$services) {
+  $services['more']['title'] = t('More');
+  $services['facebook'] = array('class' => 'addthis_button_facebook',
+  															'title' => t('Share on Facebook'));
+}
+
 include_once('kolding_modules.features.inc');
