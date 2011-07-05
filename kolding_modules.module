@@ -101,7 +101,9 @@ function kolding_modules_ting_search_pages_redirect() {
 function kolding_modules_init() {
   // AddThis is integrated into the page template so addthis_add_default_js gets called too
   // late in the process. We add it here instead.
-  addthis_add_default_js();
+  if(module_exists('addthis')) {
+    addthis_add_default_js();
+  }
 }
 
 /**
