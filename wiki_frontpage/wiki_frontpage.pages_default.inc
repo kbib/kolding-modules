@@ -242,7 +242,10 @@ function wiki_frontpage_default_page_manager_pages() {
     $pane->style = array(
       'settings' => NULL,
     );
-    $pane->css = array();
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'pane-library_portal',
+    );
     $pane->extras = array();
     $pane->position = 0;
     $display->content['new-6'] = $pane;
