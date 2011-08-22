@@ -1,0 +1,11 @@
+<?php
+
+/**
+ * Implementation of hook_update_N().
+ *
+ * Enable ting_search_typepicker module and update settings from previous modules.
+ */
+function kolding_modules_update_6000() {
+  drupal_install_modules(array('ting_search_typepicker'));
+  variable_set('ting_search_typepicker_types', variable_get('kolding_modules', ''));
+}

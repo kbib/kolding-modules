@@ -1,0 +1,5 @@
+core = "6.x"
+dependencies[] = "ting_search"
+description = "Adds a drop down to the Ting search field which supports searching by material type"
+name = "Ting search typepicker"
+package = "Ding!"
