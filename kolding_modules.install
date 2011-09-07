@@ -1,6 +1,13 @@
 <?php
 
 /**
+ * Implementation of hook_install().
+ */
+function kolding_modules_install() {
+  kolding_module_setup_keys();
+}
+
+/**
  * Implementation of hook_update_N().
  *
  * Enable ting_search_typepicker module and update settings from previous modules.
@@ -8,4 +15,48 @@
 function kolding_modules_update_6000() {
   drupal_install_modules(array('ting_search_typepicker'));
   variable_set('ting_search_typepicker_types', variable_get('kolding_modules', ''));
+}
+
+/**
+ * Implementation of hook_update_N().
+ *
+ * Enable missing gmap and keys module and add Google Maps keys.
+ */
+function kolding_modules_update_6001() {
+  drupal_install_modules(array('gmap', 'keys', 'ding_library_map'));
+  kolding_modules_setup_keys();
+}
+
+/**
+ * Add/update keys for the site.
+ */
+function kolding_modules_setup_keys() {
+  if (!function_exists('keys_save_key')) {
+    return;
+  }
+
+  $keys = array();
+
+  // Google Maps key for the beta site
+  $beta_gmap_key = new stdClass();
+  $beta_gmap_key->service = 'google_maps';
+  $beta_gmap_key->rule = 'beta.koldingbib.dk';
+  $beta_gmap_key->api_key = 'ABQIAAAAoy_hS-wC5__lbn7WhHF70RS9xePIWgV3Kkrqse_GB6G0tFyPiRQLHytp_-nU_j2_GBNp7yzS14c-MA';
+  $keys[] = $beta_gmap_key;
+
+  $prod_gmap_key = new stdClass();
+  $prod_gmap_key->service = 'google_maps';
+  $prod_gmap_key->rule = 'koldingbib.dk';
+  $prod_gmap_key->api_key = 'ABQIAAAAoy_hS-wC5__lbn7WhHF70RTOqAwOxNyyMQH8zyLyzmUuF7flmhRYN9h8PNCyAZq3xntTkxjZ00FcxA';
+  $keys[] = $prod_gmap_key;
+
+  foreach ($keys as $key) {
+    // Check if we already have a key for this service/rule combination
+    $kid = db_result(db_query('SELECT kid FROM {keys_api} WHERE service = "%s" and rule = "%s"',
+                              $key->service, $key->rule));
+    if ($kid) {
+      $key->kid = $kid;
+    }
+    keys_save_key($key);
+  }
 }
