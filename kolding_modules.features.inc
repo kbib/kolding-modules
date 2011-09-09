@@ -33,6 +33,21 @@ function kolding_modules_imagecache_default_presets() {
         ),
       ),
     ),
+    'kolding_top_image' => array(
+      'presetname' => 'kolding_top_image',
+      'actions' => array(
+        '0' => array(
+          'weight' => '0',
+          'module' => 'imagecache',
+          'action' => 'imagecache_scale',
+          'data' => array(
+            'width' => '460px',
+            'height' => '100%',
+            'upscale' => 0,
+          ),
+        ),
+      ),
+    ),
   );
   return $items;
 }
