@@ -252,6 +252,31 @@ function wiki_frontpage_default_page_manager_pages() {
     $display->panels['menu'][0] = 'new-6';
     $pane = new stdClass;
     $pane->pid = 'new-7';
+    $pane->panel = 'middle';
+    $pane->type = 'custom';
+    $pane->subtype = 'custom';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'admin_title' => 'Banners',
+      'title' => '',
+      'body' => '<a href="/wiki/term/Koldingforfattere"><img src="/profiles/ding/modules/kolding_modules/wiki_frontpage/images/author-banner.png" alt="Koldingforfattere"/></a>
+<a href="http://kolding.ding.dev/wiki/term/Koldingdesignere"><img src="/profiles/ding/modules/kolding_modules/wiki_frontpage/images/design-banner.png" alt="Koldingdesignere"/></a>
+<a href="http://kolding.ding.dev/wiki/term/Koldingmusikere"><img src="/profiles/ding/modules/kolding_modules/wiki_frontpage/images/music-banner.png" alt="Koldingmusikere"/></a>',
+      'format' => '2',
+      'substitute' => 0,
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $display->content['new-7'] = $pane;
+    $display->panels['middle'][0] = 'new-7';
+    $pane = new stdClass;
+    $pane->pid = 'new-8';
     $pane->panel = 'middle_left';
     $pane->type = 'views_panes';
     $pane->subtype = 'wiki_list-panel_pane_3';
@@ -268,10 +293,10 @@ function wiki_frontpage_default_page_manager_pages() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
-    $display->content['new-7'] = $pane;
-    $display->panels['middle_left'][0] = 'new-7';
+    $display->content['new-8'] = $pane;
+    $display->panels['middle_left'][0] = 'new-8';
     $pane = new stdClass;
-    $pane->pid = 'new-8';
+    $pane->pid = 'new-9';
     $pane->panel = 'right';
     $pane->type = 'relevant';
     $pane->subtype = 'relevant';
@@ -295,10 +320,10 @@ function wiki_frontpage_default_page_manager_pages() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
-    $display->content['new-8'] = $pane;
-    $display->panels['right'][0] = 'new-8';
+    $display->content['new-9'] = $pane;
+    $display->panels['right'][0] = 'new-9';
     $pane = new stdClass;
-    $pane->pid = 'new-9';
+    $pane->pid = 'new-10';
     $pane->panel = 'tabs';
     $pane->type = 'page_tabs';
     $pane->subtype = 'page_tabs';
@@ -317,8 +342,8 @@ function wiki_frontpage_default_page_manager_pages() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
-    $display->content['new-9'] = $pane;
-    $display->panels['tabs'][0] = 'new-9';
+    $display->content['new-10'] = $pane;
+    $display->panels['tabs'][0] = 'new-10';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
