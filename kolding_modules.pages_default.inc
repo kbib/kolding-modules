@@ -709,10 +709,11 @@ function kolding_modules_default_page_manager_handlers() {
     $pane->cache = array();
     $pane->style = array(
       'settings' => NULL,
+      'style' => 'ding_box',
     );
     $pane->css = array(
       'css_id' => '',
-      'css_class' => 'ding-box-pane',
+      'css_class' => '',
     );
     $pane->extras = array();
     $pane->position = 1;
