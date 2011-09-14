@@ -261,8 +261,8 @@ function wiki_frontpage_default_page_manager_pages() {
       'admin_title' => 'Banners',
       'title' => '',
       'body' => '<a href="/wiki/term/Koldingforfattere"><img src="/profiles/ding/modules/kolding_modules/wiki_frontpage/images/author-banner.png" alt="Koldingforfattere"/></a>
-<a href="http://kolding.ding.dev/wiki/term/Koldingdesignere"><img src="/profiles/ding/modules/kolding_modules/wiki_frontpage/images/design-banner.png" alt="Koldingdesignere"/></a>
-<a href="http://kolding.ding.dev/wiki/term/Koldingmusikere"><img src="/profiles/ding/modules/kolding_modules/wiki_frontpage/images/music-banner.png" alt="Koldingmusikere"/></a>',
+<a href="/wiki/term/Koldingdesignere"><img src="/profiles/ding/modules/kolding_modules/wiki_frontpage/images/design-banner.png" alt="Koldingdesignere"/></a>
+<a href="/wiki/term/Koldingmusikere"><img src="/profiles/ding/modules/kolding_modules/wiki_frontpage/images/music-banner.png" alt="Koldingmusikere"/></a>',
       'format' => '2',
       'substitute' => 0,
     );
