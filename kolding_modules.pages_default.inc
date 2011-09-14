@@ -635,6 +635,119 @@ function kolding_modules_default_page_manager_handlers() {
 
   $export['kolding_ting_object_view_panel'] = $handler;
 
+  $handler = new stdClass;
+  $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
+  $handler->api_version = 1;
+  $handler->name = 'kolding_ting_collection_view_panel';
+  $handler->task = 'page';
+  $handler->subtask = 'ting_collection_view';
+  $handler->handler = 'panel_context';
+  $handler->weight = -1;
+  $handler->conf = array(
+    'title' => 'Kolding collection view',
+    'no_blocks' => FALSE,
+    'css_id' => '',
+    'css' => '',
+    'contexts' => array(),
+    'relationships' => array(),
+  );
+  $display = new panels_display;
+  $display->layout = 'twocol_left_stacked';
+  $display->layout_settings = array();
+  $display->panel_settings = array(
+    'style_settings' => array(
+      'default' => NULL,
+      'top' => NULL,
+      'left' => NULL,
+      'right' => NULL,
+      'bottom' => NULL,
+    ),
+  );
+  $display->cache = array();
+  $display->title = '%collection_id:title_full';
+  $display->content = array();
+  $display->panels = array();
+    $pane = new stdClass;
+    $pane->pid = 'new-1';
+    $pane->panel = 'left';
+    $pane->type = 'collection_view';
+    $pane->subtype = 'collection_view';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'context' => array(
+        0 => 'argument_collection_id_1',
+        1 => 'argument_string_1',
+      ),
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $display->content['new-1'] = $pane;
+    $display->panels['left'][0] = 'new-1';
+    $pane = new stdClass;
+    $pane->pid = 'new-2';
+    $pane->panel = 'left';
+    $pane->type = 'recommendation_list';
+    $pane->subtype = 'recommendation_list';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'context' => array(
+        0 => 'empty',
+        1 => 'argument_collection_id_1',
+      ),
+      'override_title' => 1,
+      'override_title_text' => 'Andre der har lånt',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'ding-box-pane',
+    );
+    $pane->extras = array();
+    $pane->position = 1;
+    $display->content['new-2'] = $pane;
+    $display->panels['left'][1] = 'new-2';
+    $pane = new stdClass;
+    $pane->pid = 'new-3';
+    $pane->panel = 'right';
+    $pane->type = 'relevant';
+    $pane->subtype = 'relevant_campaigns';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'context' => array(
+        0 => 'empty',
+        1 => 'empty',
+        2 => 'empty',
+      ),
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $display->content['new-3'] = $pane;
+    $display->panels['right'][0] = 'new-3';
+  $display->hide_title = PANELS_TITLE_FIXED;
+  $display->title_pane = 'new-1';
+  $handler->conf['display'] = $display;
+
+  $export['kolding_ting_collection_view_panel'] = $handler;
 
   return $export;
 }
