@@ -44,7 +44,7 @@ function ting_search_typepicker_form_ting_search_form_alter(&$form, &$form_state
     '#type' => 'select',
     '#options' => $options,
     '#attributes' => array('class' => 'select-type-field'),
-    '#after_build' => array('_ting_search_typepicker_add_js'),
+    '#after_build' => array('_ting_search_typepicker_add_js_css'),
   );
 
   // Add submit after type picker
@@ -76,7 +76,8 @@ function ting_search_typepicker_ting_search_pages_redirect() {
 /**
  * Add typepicker javascript
  */
-function _ting_search_typepicker_add_js($element) {
+function _ting_search_typepicker_add_js_css($element) {
+  drupal_add_css(drupal_get_path('module', 'ting_search_typepicker') . '/css/ting_search_typepicker.css');
   drupal_add_js(drupal_get_path('module', 'ting_search_typepicker') . '/js/ting_search_typepicker.js');
   return $element;
 }

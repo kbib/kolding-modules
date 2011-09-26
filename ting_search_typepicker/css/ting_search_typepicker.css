@@ -1,0 +1,2 @@
+/* Type picker menu must be above the search carousel which has index 1 */
+#edit-type-menu { z-index: 10; }
