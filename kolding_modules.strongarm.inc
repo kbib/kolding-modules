@@ -26,5 +26,22 @@ function kolding_modules_strongarm() {
   );
 
   $export['addthis_config'] = $strongarm;
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'ding_library_map_center';
+  $strongarm->value = array(
+    'lat' => '55.497138288785806',
+    'lon' => '9.441375732421875',
+  );
+
+  $export['ding_library_map_center'] = $strongarm;
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'ding_library_map_zoom';
+  $strongarm->value = '11';
+
+  $export['ding_library_map_zoom'] = $strongarm;
   return $export;
 }
