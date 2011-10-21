@@ -71,6 +71,17 @@ function kolding_modules_rules_defaults() {
         '#status' => 'default',
         '#conditions' => array(
           '0' => array(
+            '#weight' => 0,
+            '#type' => 'condition',
+            '#settings' => array(
+              'type' => array(
+                'article' => 'article',
+              ),
+              '#argument map' => array(
+                'node' => 'node',
+              ),
+            ),
+            '#name' => 'rules_condition_content_is_type',
             '#info' => array(
               'label' => 'Created content is article',
               'label callback' => FALSE,
@@ -82,46 +93,11 @@ function kolding_modules_rules_defaults() {
               ),
               'module' => 'Node',
             ),
-            '#name' => 'rules_condition_content_is_type',
-            '#settings' => array(
-              'type' => array(
-                'article' => 'article',
-              ),
-              '#argument map' => array(
-                'node' => 'node',
-              ),
-            ),
-            '#type' => 'condition',
-            '#weight' => 0,
           ),
         ),
         '#actions' => array(
-          '0' => array(
-            '#weight' => 0,
-            '#type' => 'action',
-            '#settings' => array(
-              'view' => 'kolding_article_list',
-            ),
-            '#name' => 'cache_actions_action_clear_views_cache',
-            '#info' => array(
-              'label' => 'Clear the cache of a article_list view.',
-              'label callback' => FALSE,
-              'arguments' => array(
-                'view' => array(
-                  'type' => 'string',
-                  'label' => 'View',
-                  'description' => 'Specify the view you want to clear.',
-                ),
-              ),
-              'module' => 'Cache Actions',
-            ),
-          ),
           '1' => array(
-            '#type' => 'action',
-            '#settings' => array(
-              'view' => 'user_blog_list',
-            ),
-            '#name' => 'cache_actions_action_clear_views_cache',
+            '#weight' => 0,
             '#info' => array(
               'label' => 'Clear the cache of a user_blog_list view.',
               'label callback' => FALSE,
@@ -134,7 +110,31 @@ function kolding_modules_rules_defaults() {
               ),
               'module' => 'Cache Actions',
             ),
-            '#weight' => 0,
+            '#name' => 'cache_actions_action_clear_views_cache',
+            '#settings' => array(
+              'view' => 'user_blog_list',
+            ),
+            '#type' => 'action',
+          ),
+          '0' => array(
+            '#info' => array(
+              'label' => 'Clear the cache of a article_list view.',
+              'label callback' => FALSE,
+              'arguments' => array(
+                'view' => array(
+                  'type' => 'string',
+                  'label' => 'View',
+                  'description' => 'Specify the view you want to clear.',
+                ),
+              ),
+              'module' => 'Cache Actions',
+            ),
+            '#name' => 'cache_actions_action_clear_views_cache',
+            '#settings' => array(
+              'view' => 'kolding_article_list',
+            ),
+            '#type' => 'action',
+            '#weight' => 1,
           ),
         ),
         '#version' => 6003,
