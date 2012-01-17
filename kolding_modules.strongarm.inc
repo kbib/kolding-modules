@@ -43,5 +43,19 @@ function kolding_modules_strongarm() {
   $strongarm->value = '11';
 
   $export['ding_library_map_zoom'] = $strongarm;
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'webtrends_dcs_id';
+  $strongarm->value = 'dcsjnu3n5u3uwyy64b9k91v2o_6y8p';
+
+  $export['webtrends_dcs_id'] = $strongarm;
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'webtrends_domain';
+  $strongarm->value = 'visionize10.visionize.dk';
+
+  $export['webtrends_domain'] = $strongarm;
   return $export;
 }
