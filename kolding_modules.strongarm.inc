@@ -54,7 +54,7 @@ function kolding_modules_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'webtrends_domain';
-  $strongarm->value = 'visionize10.visionize.dk';
+  $strongarm->value = 'koldingbib.dk';
 
   $export['webtrends_domain'] = $strongarm;
   return $export;
