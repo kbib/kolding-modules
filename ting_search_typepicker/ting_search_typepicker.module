@@ -35,13 +35,15 @@ function ting_search_typepicker_form_ting_search_form_alter(&$form, &$form_state
   }
   foreach ($rows as $value){
   	$value = explode('|',$value);
-        if (strpos($value[0], ':') === FALSE) {
-          // Old style type name, change to new.
-          $value[0] == 'facet.type:' . $value[0];
-        }
-        if (substr($value[0], -1) != ';') {
-          // Ensure trailing semicolon.
-          $value[0] .= ';';
+        if ($value[0] != ''){
+          if (strpos($value[0], ':') === FALSE) {
+            // Old style type name, change to new.
+            $value[0] == 'facet.type:' . $value[0];
+          }
+          if (substr($value[0], -1) != ';') {
+            // Ensure trailing semicolon.
+            $value[0] .= ';';
+          }
         }
   	$options[$value[0]] = $value[1];
   }
