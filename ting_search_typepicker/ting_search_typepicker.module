@@ -38,7 +38,7 @@ function ting_search_typepicker_form_ting_search_form_alter(&$form, &$form_state
         if ($value[0] != ''){
           if (strpos($value[0], ':') === FALSE) {
             // Old style type name, change to new.
-            $value[0] == 'facet.type:' . $value[0];
+            $value[0] = 'facet.type:' . $value[0];
           }
           if (substr($value[0], -1) != ';') {
             // Ensure trailing semicolon.
