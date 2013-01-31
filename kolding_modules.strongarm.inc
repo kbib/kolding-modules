@@ -46,6 +46,32 @@ function kolding_modules_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'eu_cookie_compliance_da';
+  $strongarm->value = array(
+    'popup_enabled' => 1,
+    'popup_clicking_confirmation' => 0,
+    'popup_position' => 0,
+    'popup_info' => array(
+      'value' => '<h2>Vi bruger cookies på koldingbib.dk.</h2>
+Du accepterer brug af cookies når du klikker på hjemmesiden.<br />
+Hvis du ikke vil tillade cookies - <a href=\'/cookies\'>se vejledning</a> og læs mere.',
+      'format' => '2',
+    ),
+    'popup_agreed' => array(
+      'value' => '<h2>Thank you for accepting cookies</h2><p>You can now hide this message or find out more about cookies.</p>',
+      'format' => '2',
+    ),
+    'popup_agreed_enabled' => 1,
+    'popup_link' => 'cookies',
+    'popup_height' => '',
+    'popup_width' => '100%',
+    'popup_delay' => '1',
+  );
+
+  $export['eu_cookie_compliance_da'] = $strongarm;
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'webtrends_dcs_id';
   $strongarm->value = 'dcsjnu3n5u3uwyy64b9k91v2o_6y8p';
 
